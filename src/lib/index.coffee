@@ -11,33 +11,36 @@ RegExp.escape = (text) -> text.replace /[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"
 sender: sender email
 text  : text body
 ###
-module.export.strip = (sender, text) ->
+module.exports = (sender, text) ->
 
   # escape sender email
-  email = RegExp.escape from
+  email = RegExp.escape sender
 
-  #To remove quotation in the end:
-  new Regex("^>.*$", RegexOptions.IgnoreCase | RegexOptions.Multiline);
+  # remove quotation in the end
+  text = text.replace /^>.*$/gm, ''
 
   # test text against the following regexp list
-  regexps =
-    /// From: \s* #{email}        /// # From: test@test.com
-    /// <#{email}>                /// # <test@test.com>
-    /// #{email} \s+ wrote:       /// # test@test.com wrote
-    /// \n .* On .* \S* wrote:    /// # On Fri, May 25, 2012 at 1:33 PM, xxx wrote:
-    /// "-+original \s+ message-+ /// # ---Original Message---
-    /// \n \s+ ABOVE THIS LINE    /// # reply ABOVE THIS LINE
-
+  regexps = [
+    /// From:\s* #{email}             ///gi # From: test@test.com
+    /// <#{email}>                    ///gi # <test@test.com>
+    /// On .* \s* .* wrote:           ///gi # On Fri, May 25, 2012 at 1:33 PM, xxx wrote:
+    /// -+original \s+ message-+      ///gi # ---Original Message---
+    /// \s+ Sent \s+ from \s+ my .*   ///gi # Sent from my Iphone
+    /// \n .* #{'ABOVE THIS LINE'}    ///gi # reply ABOVE THIS LINE
+    /// --\n .*                       ///gi # -- signature
   ]
 
   # init index at the bottom of the text
   index = text.length
 
   #calculates the matching regex closest to top of page
-  m = reg.exec text for reg in regexps
-  index = m.index if m and index > m.index
+  for reg in regexps
+    m = reg.exec text
+    index = m.index if m and index > m.index
 
-  # return stripped text
-  text[..index]
+
+  # stripped & trim
+  text[...index].trim()
+
 
 

@@ -2,7 +2,6 @@ fs            = require 'fs'
 path          = require 'path'
 {spawn, exec} = require 'child_process'
 
-
 # Run a CoffeeScript through our node/coffee interpreter.
 run = (args, cb) ->
   proc = spawn 'coffee', args
@@ -12,6 +11,13 @@ run = (args, cb) ->
     cb() if typeof cb is 'function'
 
 task 'build', 'build mailstrip', (cb) ->
+
+  # lib
   files = fs.readdirSync 'src/lib'
   files = ('src/lib/' + file for file in files when file.match(/\.coffee$/))
   run ['-c', '-o', 'lib/'].concat(files), cb
+
+  # test
+  files = fs.readdirSync 'src/test'
+  files = ('src/test/' + file for file in files when file.match(/\.coffee$/))
+  run ['-c', '-o', 'test/'].concat(files), cb
