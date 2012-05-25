@@ -72,7 +72,6 @@ describe 'strip', ->
     content = mailstrip sender, text
     content.should.equal 'content'
 
-
   it 'after signature', ->
 
     text =
@@ -85,7 +84,6 @@ describe 'strip', ->
     content = mailstrip sender, text
     content.should.equal 'content'
 
-
   it 'quotation', ->
 
     text =
@@ -96,5 +94,3 @@ describe 'strip', ->
     """
     content = mailstrip sender, text
     content.should.equal 'content'
-
-
