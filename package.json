@@ -1,0 +1,19 @@
+{
+  "author": "Pierre-Guillaume Herveou",
+  "name": "mailstrip",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pgherveou/mailstrip.git"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai" : "*"
+  },
+  "main": "./lib/index.js",
+  "scripts": {
+    "prepublish": "cake build"
+  },
+}
