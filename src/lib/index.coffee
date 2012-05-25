@@ -19,7 +19,7 @@ module.export.strip = (sender, text) ->
   #To remove quotation in the end:
   new Regex("^>.*$", RegexOptions.IgnoreCase | RegexOptions.Multiline);
 
-
+  # test text against the following regexp list
   regexps =
     /// From: \s* #{email}        /// # From: test@test.com
     /// <#{email}>                /// # <test@test.com>
