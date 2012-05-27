@@ -6,8 +6,7 @@ to return only the content body.
 Its just a simple list of regexp that defines where the email need to be truncated
 each regexp has its own test.
 
-Feel free to contribute by adding, a regexp and a testcase
-tests are built with [mocha] [1] & [chai] [2]
+Feel free to contribute by adding, a regexp and a testcase (tests are built with [mocha] [1] & [chai] [2])
 
 install
 -------
