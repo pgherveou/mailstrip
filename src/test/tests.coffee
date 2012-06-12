@@ -27,13 +27,24 @@ describe 'strip', ->
     content = mailstrip sender, text
     content.should.equal 'content'
 
-  it 'after xxx wrote:', ->
+  it 'after On xxx wrote:', ->
 
     text =
     '''
     content
     On Fri, May 25, 2012 at 1:33 PM
     test@test.com wrote:
+    xxx
+    '''
+    content = mailstrip sender, text
+    content.should.equal 'content'
+
+  it 'after Le xxx a écrit', ->
+
+    text =
+    '''
+    content
+    Le 12 juin 2012 à 17:50, "test" <test@test.com> a écrit :
     xxx
     '''
     content = mailstrip sender, text

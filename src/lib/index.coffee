@@ -21,6 +21,7 @@ module.exports = (sender, text) ->
     From:\s* #{email}                   # From: test@test.com
     | <#{email}>                        # <test@test.com>
     | On .* \s* .* wrote:               # On Fri, May 25, 2012 at 1:33 PM, xxx wrote:
+    | Le .* \s* .* #{'a écrit :'}       # Le 12 juin 2012 à 17:50, xxx a écrit :"
     | -+original \s+ message-+          # ---Original Message---
     | \s+ Sent \s+ from \s+ my .*       # Sent from my Iphone
     | \n .* #{'reply above this line'}  # reply ABOVE THIS LINE
