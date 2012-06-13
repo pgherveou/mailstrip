@@ -20,7 +20,7 @@ usage
 
 ```javascript
 var mailstrip = require('mailstrip')
-  , content = mailstrip(senderEmail, emailData);
+  , content = mailstrip(emailBody);
 ```
 
 test

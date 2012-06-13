@@ -10,70 +10,37 @@
     var sender;
     sender = 'test@test.com';
     it('after From: test@test.com', function() {
-      var content, text;
-      text = 'content\nFrom: test@test.com\nxxx';
-      content = mailstrip(sender, text);
-      return content.should.equal('content');
+      return mailstrip('content\nFrom: test@test.com\nxxx').should.equal('content');
     });
     it('after <xxx@xxx.com>', function() {
-      var content, text;
-      text = 'content\n<test@test.com>\nxxx';
-      content = mailstrip(sender, text);
-      return content.should.equal('content');
+      return mailstrip('content\n<test@test.com>\nxxx').should.equal('content');
     });
     it('after On xxx wrote:', function() {
-      var content, text;
-      text = 'content\nOn Fri, May 25, 2012 at 1:33 PM\ntest@test.com wrote:\nxxx';
-      content = mailstrip(sender, text);
-      return content.should.equal('content');
+      return mailstrip('content\nOn Fri, May 25, 2012 at 1:33 PM\ntest@test.com wrote:\nxxx').should.equal('content');
     });
     it('after Le xxx a écrit', function() {
-      var content, text;
-      text = 'content\nLe .* \s* .* a écrit :\nLe 12 juin 2012 à 17:50, "test" <test@test.com> a écrit :\nxxx';
-      content = mailstrip(sender, text);
-      return content.should.equal('content');
+      return mailstrip('content\nLe .* \s* .* a écrit :\nLe 12 juin 2012 à 17:50, "test" <test@test.com> a écrit :\nxxx').should.equal('content');
     });
     it('after sent from my xxx:', function() {
-      var content, text;
-      text = 'content\nSent from my Iphone\nxxx';
-      content = mailstrip(sender, text);
-      return content.should.equal('content');
+      return mailstrip('content\nSent from my Iphone\nxxx').should.equal('content');
     });
     it('after Envoye de mon xxx', function() {
-      var content, text;
-      text = 'content\nenvoyé de mon ipad\nxxx';
-      content = mailstrip(sender, text);
-      return content.should.equal('content');
+      return mailstrip('content\nenvoyé de mon ipad\nxxx').should.equal('content');
     });
     it('after envoyé depuis mon xxx', function() {
-      var content, text;
-      text = 'content\nenvoyé depuis mon iphone\nxxx';
-      content = mailstrip(sender, text);
-      return content.should.equal('content');
+      return mailstrip('content\nenvoyé depuis mon iphone\nxxx').should.equal('content');
     });
     it('after reply ABOVE...', function() {
-      var content, text;
-      text = 'content\nreply ABOVE THIS LINE\nxxx';
-      content = mailstrip(sender, text);
-      return content.should.equal('content');
+      return mailstrip('content\nreply ABOVE THIS LINE\nxxx').should.equal('content');
     });
     it('after original message', function() {
-      var content, text;
-      text = 'content\n---original message---\nxxx';
-      content = mailstrip(sender, text);
-      return content.should.equal('content');
+      return mailstrip('content\n---original message---\nxxx').should.equal('content');
     });
     it('after signature', function() {
-      var content, text;
-      text = 'content\n--\nfoo Lestavel\nxxx';
-      content = mailstrip(sender, text);
-      return content.should.equal('content');
+      return mailstrip('content\n--\nfoo Lestavel\nxxx').should.equal('content');
     });
     return it('quotation', function() {
-      var content, text;
-      text = 'content\n> xxxxx\n> xxxxx';
-      content = mailstrip(sender, text);
-      return content.should.equal('content');
+      return mailstrip('content\n> xxxxx\n> xxxxx').should.equal('content');
     });
   });
 

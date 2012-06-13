@@ -1,25 +1,20 @@
+# js regexp escape
+# RegExp.escape = (text) -> text.replace /[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"
+
 ###
 Strip email to keep only the actual reply
+text: text body
 ###
-
-# js regexp escape
-RegExp.escape = (text) -> text.replace /[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"
-
-###
-sender: sender email
-text  : text body
-###
-module.exports = (sender, text) ->
-
-  # escape sender email
-  email = RegExp.escape sender
+module.exports = (text) ->
 
   # remove quotation in the end
   text = text.replace /^>.*$/gm, ''
 
+  emailReg = '[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}'
+
   exp = ///
-    From:\s* #{email}                   # From: test@test.com
-    | <#{email}>                        # <test@test.com>
+    From:\s* #{emailReg}                # From: test@test.com
+    | <#{emailReg}>                     # <test@test.com>
     | On .* \s* .* wrote:               # On Fri, May 25, 2012 at 1:33 PM, xxx wrote:
     | Le .* \s* .* #{'a écrit :'}       # Le 12 juin 2012 à 17:50, xxx a écrit :"
     | -+original \s+ message-+          # ---Original Message---
