@@ -24,6 +24,8 @@ module.exports = (sender, text) ->
     | Le .* \s* .* #{'a écrit :'}       # Le 12 juin 2012 à 17:50, xxx a écrit :"
     | -+original \s+ message-+          # ---Original Message---
     | \s+ Sent \s+ from \s+ my .*       # Sent from my Iphone
+    | \s+ envoyé \s+ depuis \s+ mon .*  # Envoye depuis my Iphone
+    | \s+ envoyé \s+ de \s+ mon .*      # Envoye depuis de mon ipad
     | \n .* #{'reply above this line'}  # reply ABOVE THIS LINE
     | --\n .*                           # -- signature
   ///gi
@@ -33,6 +35,3 @@ module.exports = (sender, text) ->
 
   # stripped & trim
   text[...index].trim()
-
-
-

@@ -29,13 +29,25 @@
     });
     it('after Le xxx a écrit', function() {
       var content, text;
-      text = 'content\nLe 12 juin 2012 à 17:50, "test" <test@test.com> a écrit :\nxxx';
+      text = 'content\nLe .* \s* .* a écrit :\nLe 12 juin 2012 à 17:50, "test" <test@test.com> a écrit :\nxxx';
       content = mailstrip(sender, text);
       return content.should.equal('content');
     });
     it('after sent from my xxx:', function() {
       var content, text;
       text = 'content\nSent from my Iphone\nxxx';
+      content = mailstrip(sender, text);
+      return content.should.equal('content');
+    });
+    it('after Envoye de mon xxx', function() {
+      var content, text;
+      text = 'content\nenvoyé de mon ipad\nxxx';
+      content = mailstrip(sender, text);
+      return content.should.equal('content');
+    });
+    it('after envoyé depuis mon xxx', function() {
+      var content, text;
+      text = 'content\nenvoyé depuis mon iphone\nxxx';
       content = mailstrip(sender, text);
       return content.should.equal('content');
     });
