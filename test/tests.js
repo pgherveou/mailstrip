@@ -16,10 +16,13 @@
       return mailstrip('content\n<test@test.com>\nxxx').should.equal('content');
     });
     it('after On xxx wrote:', function() {
-      return mailstrip('content\nOn Fri, May 25, 2012 at 1:33 PM\ntest@test.com wrote:\nxxx').should.equal('content');
+      return mailstrip('content\nOn Fri, May 25, 2012 at 1:33 PM test@test.com wrote:\nxxx').should.equal('content');
     });
     it('after Le xxx a écrit', function() {
-      return mailstrip('content\nLe .* \s* .* a écrit :\nLe 12 juin 2012 à 17:50, "test" <test@test.com> a écrit :\nxxx').should.equal('content');
+      return mailstrip('content\nLe 12 juin 2012 à 17:50, "test" <test@test.com> a écrit :\nxxx').should.equal('content');
+    });
+    it('after Le xxx a écrit (2)', function() {
+      return mailstrip('voila le content\nLe 12 juin 2012 à 17:50, "test" <test@test.com> a écrit :\nxxx').should.equal('voila le content');
     });
     it('after sent from my xxx:', function() {
       return mailstrip('content\nSent from my Iphone\nxxx').should.equal('content');

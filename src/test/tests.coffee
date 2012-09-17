@@ -27,8 +27,7 @@ describe 'strip', ->
     mailstrip(
       '''
       content
-      On Fri, May 25, 2012 at 1:33 PM
-      test@test.com wrote:
+      On Fri, May 25, 2012 at 1:33 PM test@test.com wrote:
       xxx
       '''
     ).should.equal 'content'
@@ -37,11 +36,19 @@ describe 'strip', ->
     mailstrip(
       '''
       content
-      Le .* \s* .* a écrit :
       Le 12 juin 2012 à 17:50, "test" <test@test.com> a écrit :
       xxx
       '''
     ).should.equal 'content'
+
+  it 'after Le xxx a écrit (2)', ->
+    mailstrip(
+      '''
+      voila le content
+      Le 12 juin 2012 à 17:50, "test" <test@test.com> a écrit :
+      xxx
+      '''
+    ).should.equal 'voila le content'
 
   it 'after sent from my xxx:', ->
     mailstrip(
