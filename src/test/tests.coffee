@@ -24,13 +24,18 @@ describe 'strip', ->
     ).should.equal 'content'
 
   it 'after On xxx wrote:', ->
+    content = '''
+    On your mark
+    Ready
+    GO !
+    '''
     mailstrip(
-      '''
-      content
+      """
+      #{content}
       On Fri, May 25, 2012 at 1:33 PM test@test.com wrote:
       xxx
-      '''
-    ).should.equal 'content'
+      """
+    ).should.equal content
 
   it 'after Le xxx a écrit', ->
     mailstrip(

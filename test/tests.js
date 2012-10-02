@@ -16,7 +16,9 @@
       return mailstrip('content\n<test@test.com>\nxxx').should.equal('content');
     });
     it('after On xxx wrote:', function() {
-      return mailstrip('content\nOn Fri, May 25, 2012 at 1:33 PM test@test.com wrote:\nxxx').should.equal('content');
+      var content;
+      content = 'On your mark\nReady\nGO !';
+      return mailstrip("" + content + "\nOn Fri, May 25, 2012 at 1:33 PM test@test.com wrote:\nxxx").should.equal(content);
     });
     it('after Le xxx a écrit', function() {
       return mailstrip('content\nLe 12 juin 2012 à 17:50, "test" <test@test.com> a écrit :\nxxx').should.equal('content');
