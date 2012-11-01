@@ -15,6 +15,7 @@ module.exports = (text) ->
   exp = ///
     ^From:\s* #{emailReg}               # From: test@test.com
     | ^<#{emailReg}>                    # <test@test.com>
+    | ^.*<#{emailReg}>$                 # yyyy/mm/dd ... <xxx@xxx.com>
     | ^On .* wrote:                     # On Fri, May 25, 2012 at 1:33 PM, xxx wrote:
     | ^Le .* #{'a écrit :'}             # Le 12 juin 2012 à 17:50, xxx a écrit :"
     | ^-+original \s+ message-+         # ---Original Message---

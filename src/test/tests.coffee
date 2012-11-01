@@ -23,6 +23,15 @@ describe 'strip', ->
       '''
     ).should.equal 'content'
 
+  it 'after yyyy/mm/dd ... <xxx@xxx.com>', ->
+    mailstrip(
+      '''
+      content
+      2012/10/30 ... <xxx@xxx.com>
+      xxx
+      '''
+    ).should.equal 'content'
+
   it 'after On xxx wrote:', ->
     content = '''
     On your mark
