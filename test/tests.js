@@ -16,6 +16,9 @@ describe('strip', function() {
   it('after yyyy/mm/dd ... <xxx@xxx.com>', function() {
     return mailstrip('content\n2012/10/30 ... <xxx@xxx.com>\nxxx').should.equal('content');
   });
+  it('after ... <xxx@xxx.com> ...', function() {
+    return mailstrip('content\n\nOn Tue, Oct 2, 2012 at 1:18 PM, Image Description <someone@domain.com> wrote:\nxxx').should.equal('content');
+  });
   it('after On xxx wrote:', function() {
     var content;
     content = 'On your mark\nReady\nGO !';

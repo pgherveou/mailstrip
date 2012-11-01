@@ -32,6 +32,16 @@ describe 'strip', ->
       '''
     ).should.equal 'content'
 
+  it 'after ... <xxx@xxx.com> ...', ->
+    mailstrip(
+      '''
+      content
+
+      On Tue, Oct 2, 2012 at 1:18 PM, Image Description <someone@domain.com> wrote:
+      xxx
+      '''
+    ).should.equal 'content'
+
   it 'after On xxx wrote:', ->
     content = '''
     On your mark
