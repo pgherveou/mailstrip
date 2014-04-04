@@ -42,6 +42,17 @@ describe 'strip', ->
       '''
     ).should.equal 'content'
 
+  it 'after On ..., ...\n... wrote:', ->
+      mailstrip(
+        '''
+        content
+
+        On Tue, Oct 2, 2012 at 1:18 PM, Image Description
+        <someone@domain.com> wrote:
+        xxx
+        '''
+      ).should.equal 'content'
+
   it 'after On xxx wrote:', ->
     content = '''
     On your mark
@@ -55,6 +66,18 @@ describe 'strip', ->
       xxx
       """
     ).should.equal content
+
+  it 'after On xxx wrote: (2)', ->
+    mailstrip(
+      '''
+      content
+      On Thu, Apr 3, 2014 at 5:57 PM, Pierre-Guillaume Herveou <
+      notifications@jogabo.com> wrote:
+
+      > xxx
+      > xxx
+      '''
+    ).should.equal('content')
 
   it 'after Le xxx a écrit', ->
     mailstrip(
