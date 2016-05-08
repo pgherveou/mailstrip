@@ -56,6 +56,9 @@
     it('after signature', function() {
       return mailstrip('content\n--\nfoo Lestavel\nxxx').should.equal('content');
     });
+    it('after On date "names in quote" wrote ', function() {
+      return mailstrip('content\r\nOn 8 May 2016 9:30 AM, \"WebStandup\" <\r\nemail@domain.com> wrote:\nxxx').should.equal('content');
+    });
     return it('quotation', function() {
       return mailstrip('content\n> xxxxx\n> xxxxx').should.equal('content');
     });
