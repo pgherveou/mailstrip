@@ -35,5 +35,5 @@ $ mocha
 ```
 
 
-[1]: http://visionmedia.github.com/mocha/   "mocha"
+[1]: https://mochajs.org/   "mocha"
 [2]: http://chaijs.com/                     "chai"
